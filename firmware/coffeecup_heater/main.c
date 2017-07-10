@@ -27,24 +27,32 @@ int main( void )
 {
 	HwInit();
 
-	while(true){
-		heaterOn();
-		_delay_ms(1000);
-		heaterOff();
-		_delay_ms(1000);
-	}
+//	while(true){
+//		heaterOn();
+//		_delay_ms(1000);
+//		heaterOff();
+//		_delay_ms(1000);
+//	}
 
 	uint16_t i, j;
 	while(true){
 		i = DS_readTemp();
-
-		for(j = 0; j < i; j++){
-			heaterOn();
-			_delay_ms(300);
-			heaterOff();
-			_delay_ms(300);
+		if( i != DS_ERR){
+			for(j = 0; j < i; j++){
+				heaterOn();
+				_delay_ms(300);
+				heaterOff();
+				_delay_ms(300);
+			}
+		}else{
+			for(j = 0; j < 3; j++){
+				heaterOn();
+				_delay_ms(100);
+				heaterOff();
+				_delay_ms(100);
+			}
 		}
-		_delay_ms(2000);
+		_delay_ms(1000);
 	}
 
 	while(true){

@@ -116,7 +116,7 @@ uint8_t readByte( void )
 int16_t DS_readTemp( void )
 {
 
-	_delay_ms(10);
+	_delay_ms(100);
 	if(!checkPresence())
 	{
 		return DS_ERR;
@@ -129,7 +129,7 @@ int16_t DS_readTemp( void )
 	pinSet();
 	pinOut();
 
-	_delay_ms(2000);
+	_delay_ms(1500);
 
 	pinIn();
 

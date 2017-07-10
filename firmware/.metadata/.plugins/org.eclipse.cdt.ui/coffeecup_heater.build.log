@@ -1,14 +1,9 @@
-13:14:37 **** Incremental Build of configuration Release for project coffeecup_heater ****
+13:29:04 **** Incremental Build of configuration Release for project coffeecup_heater ****
 make all 
 Building file: ../DS18B20.c
 Invoking: AVR Compiler
 avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=attiny45 -DF_CPU=8000000UL -MMD -MP -MF"DS18B20.d" -MT"DS18B20.o" -c -o "DS18B20.o" "../DS18B20.c"
 Finished building: ../DS18B20.c
- 
-Building file: ../main.c
-Invoking: AVR Compiler
-avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=attiny45 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
-Finished building: ../main.c
  
 Building target: coffeecup_heater.elf
 Invoking: AVR C Linker
@@ -29,7 +24,7 @@ AVR Memory Usage
 ----------------
 Device: attiny45
 
-Program:     470 bytes (11.5% Full)
+Program:     574 bytes (14.0% Full)
 (.text + .data + .bootloader)
 
 Data:          0 bytes (0.0% Full)
@@ -39,5 +34,5 @@ Data:          0 bytes (0.0% Full)
 Finished building: sizedummy
  
 
-13:14:37 Build Finished (took 147ms)
+13:29:04 Build Finished (took 216ms)
 
