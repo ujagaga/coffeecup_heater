@@ -46,7 +46,7 @@ bool checkPresence( void )
 		isPresent = pinRead();
 	}
 
-	_delay_us(480 - 64);
+	_delay_us(480);
 
 	return !isPresent;
 }
@@ -129,10 +129,7 @@ int16_t DS_readTemp( void )
 	pinSet();
 	pinOut();
 
-	uint8_t i = 25;
-
-	_delay_ms(1000);
-
+	_delay_ms(2000);
 
 	pinIn();
 
@@ -154,7 +151,7 @@ int16_t DS_readTemp( void )
 
 	result = (result & 0x7FF);
 
-	return result;
+	return (int16_t)result;
 }
 
 

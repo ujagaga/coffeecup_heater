@@ -1,4 +1,4 @@
-activeuserprofiles=Godzila;Team
+activeuserprofiles=Team;UCD07;ucd07
 eclipse.preferences.version=1
-org.eclipse.rse.systemtype.local.systemType.defaultUserId=ujagaga
-useridperkey=Godzila.Local\=ujagaga;
+org.eclipse.rse.systemtype.local.systemType.defaultUserId=rada
+useridperkey=UCD07.Local\=rada;

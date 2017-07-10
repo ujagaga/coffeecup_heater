@@ -35,9 +35,6 @@ coffeecup_heater.lss \
 FLASH_IMAGE += \
 coffeecup_heater.hex \
 
-EEPROM_IMAGE += \
-coffeecup_heater.eep \
-
 SIZEDUMMY += \
 sizedummy \
 
@@ -65,12 +62,6 @@ coffeecup_heater.hex: coffeecup_heater.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
-coffeecup_heater.eep: coffeecup_heater.elf
-	@echo 'Create eeprom image (ihex format)'
-	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex coffeecup_heater.elf  "coffeecup_heater.eep"
-	@echo 'Finished building: $@'
-	@echo ' '
-
 sizedummy: coffeecup_heater.elf
 	@echo 'Invoking: Print Size'
 	-avr-size --format=avr --mcu=attiny45 coffeecup_heater.elf
@@ -79,10 +70,10 @@ sizedummy: coffeecup_heater.elf
 
 # Other Targets
 clean:
-	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(EEPROM_IMAGE)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) coffeecup_heater.elf
+	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) coffeecup_heater.elf
 	-@echo ' '
 
-secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
+secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 

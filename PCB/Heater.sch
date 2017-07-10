@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:Heater-rescue
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -565,7 +566,7 @@ Wire Wire Line
 	1950 5150 1950 6200
 Connection ~ 1950 6200
 $Comp
-L LED D2
+L LED-RESCUE-Heater D2
 U 1 1 5961854B
 P 2600 4750
 F 0 "D2" H 2600 4850 50  0000 C CNN
@@ -903,7 +904,7 @@ Connection ~ 5100 3900
 Text Label 4500 3250 2    60   ~ 0
 x25pcs(2.2W)
 $Comp
-L LED D4
+L LED-RESCUE-Heater D4
 U 1 1 5961C8F6
 P 6700 6550
 F 0 "D4" H 6700 6650 50  0000 C CNN

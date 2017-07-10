@@ -1,8 +1,13 @@
-22:42:05 **** Incremental Build of configuration Release for project coffeecup_heater ****
+13:14:37 **** Incremental Build of configuration Release for project coffeecup_heater ****
 make all 
+Building file: ../DS18B20.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=attiny45 -DF_CPU=8000000UL -MMD -MP -MF"DS18B20.d" -MT"DS18B20.o" -c -o "DS18B20.o" "../DS18B20.c"
+Finished building: ../DS18B20.c
+ 
 Building file: ../main.c
 Invoking: AVR Compiler
-avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=attiny45 -DF_CPU=1000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=attiny45 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
 Finished building: ../main.c
  
 Building target: coffeecup_heater.elf
@@ -18,17 +23,13 @@ Create Flash image (ihex format)
 avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex coffeecup_heater.elf  "coffeecup_heater.hex"
 Finished building: coffeecup_heater.hex
  
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex coffeecup_heater.elf  "coffeecup_heater.eep"
-Finished building: coffeecup_heater.eep
- 
 Invoking: Print Size
 avr-size --format=avr --mcu=attiny45 coffeecup_heater.elf
 AVR Memory Usage
 ----------------
 Device: attiny45
 
-Program:     424 bytes (10.4% Full)
+Program:     470 bytes (11.5% Full)
 (.text + .data + .bootloader)
 
 Data:          0 bytes (0.0% Full)
@@ -38,5 +39,5 @@ Data:          0 bytes (0.0% Full)
 Finished building: sizedummy
  
 
-22:42:05 Build Finished (took 201ms)
+13:14:37 Build Finished (took 147ms)
 
