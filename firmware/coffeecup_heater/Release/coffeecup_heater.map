@@ -117,7 +117,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0x23e
+.text           0x0000000000000000      0x1de
  *(.vectors)
  .vectors       0x0000000000000000       0x1e /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr25/crtattiny45.o
                 0x0000000000000000                __vectors
@@ -191,45 +191,45 @@ END GROUP
                 0x0000000000000030                . = ALIGN (0x2)
  *(.text.*)
  .text.checkPresence
-                0x0000000000000030       0x38 ./DS18B20.o
+                0x0000000000000030       0x3a ./DS18B20.o
                 0x0000000000000030                checkPresence
  .text.writeBit
-                0x0000000000000068       0x2a ./DS18B20.o
-                0x0000000000000068                writeBit
+                0x000000000000006a       0x2a ./DS18B20.o
+                0x000000000000006a                writeBit
  .text.sendByte
-                0x0000000000000092       0x34 ./DS18B20.o
-                0x0000000000000092                sendByte
- .text.readBit  0x00000000000000c6       0x2c ./DS18B20.o
-                0x00000000000000c6                readBit
+                0x0000000000000094       0x34 ./DS18B20.o
+                0x0000000000000094                sendByte
+ .text.readBit  0x00000000000000c8       0x2e ./DS18B20.o
+                0x00000000000000c8                readBit
  .text.readByte
-                0x00000000000000f2       0x40 ./DS18B20.o
-                0x00000000000000f2                readByte
+                0x00000000000000f6       0x40 ./DS18B20.o
+                0x00000000000000f6                readByte
  .text.DS_readTemp
-                0x0000000000000132       0x6c ./DS18B20.o
-                0x0000000000000132                DS_readTemp
- .text.HwInit   0x000000000000019e        0xa ./main.o
-                0x000000000000019e                HwInit
+                0x0000000000000136       0x74 ./DS18B20.o
+                0x0000000000000136                DS_readTemp
+ .text.HwInit   0x00000000000001aa        0xa ./main.o
+                0x00000000000001aa                HwInit
  .text.startup.main
-                0x00000000000001a8       0x92 ./main.o
-                0x00000000000001a8                main
+                0x00000000000001b4       0x26 ./main.o
+                0x00000000000001b4                main
  .text.libgcc.mul
-                0x000000000000023a        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
+                0x00000000000001da        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
  .text.libgcc.div
-                0x000000000000023a        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
- .text.libgcc   0x000000000000023a        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
+                0x00000000000001da        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
+ .text.libgcc   0x00000000000001da        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
  .text.libgcc.prologue
-                0x000000000000023a        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
+                0x00000000000001da        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
  .text.libgcc.builtins
-                0x000000000000023a        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
+                0x00000000000001da        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
  .text.libgcc.fmul
-                0x000000000000023a        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
+                0x00000000000001da        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
  .text.libgcc.fixed
-                0x000000000000023a        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
-                0x000000000000023a                . = ALIGN (0x2)
+                0x00000000000001da        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
+                0x00000000000001da                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000000000000023a        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
-                0x000000000000023a                exit
-                0x000000000000023a                _exit
+ .fini9         0x00000000000001da        0x0 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
+                0x00000000000001da                exit
+                0x00000000000001da                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -248,11 +248,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000000000000023a        0x4 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
+ .fini0         0x00000000000001da        0x4 /usr/lib/gcc/avr/4.9.2/avr25/libgcc.a(_exit.o)
  *(.fini0)
-                0x000000000000023e                _etext = .
+                0x00000000000001de                _etext = .
 
-.data           0x0000000000800060        0x0 load address 0x000000000000023e
+.data           0x0000000000800060        0x0 load address 0x00000000000001de
                 0x0000000000800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr25/crtattiny45.o
@@ -277,8 +277,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 0x0000000000800060                PROVIDE (__bss_end, .)
-                0x000000000000023e                __data_load_start = LOADADDR (.data)
-                0x000000000000023e                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000000000001de                __data_load_start = LOADADDR (.data)
+                0x00000000000001de                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0000000000800060        0x0
                 0x0000000000800060                PROVIDE (__noinit_start, .)

@@ -12,9 +12,19 @@
 #include <stdbool.h>
 #include <util/delay.h>
 #include "DS18B20.h"
-#include "main.h"
 
-#define TARGET_TEMP	(16*40)
+#define SWITCH_PIN				(PB3)
+#define LED_PIN					(PB4)
+#define SWITCH_PIN_MASK			(1 << SWITCH_PIN)
+#define LED_PIN_MASK			(1 << LED_PIN)
+
+#define LED_ON()				do{ PORTB |= LED_PIN_MASK; }while(0)
+#define LED_OFF()				do{ PORTB &= ~LED_PIN_MASK; }while(0)
+
+#define heaterOn()				do{ PORTB |= SWITCH_PIN_MASK; LED_ON(); }while(0)
+#define heaterOff()				do{ PORTB &= ~SWITCH_PIN_MASK; LED_OFF(); }while(0)
+
+#define TARGET_TEMP	(70)
 
 void HwInit( void )
 {
@@ -27,40 +37,16 @@ int main( void )
 {
 	HwInit();
 
-//	while(true){
-//		heaterOn();
-//		_delay_ms(1000);
-//		heaterOff();
-//		_delay_ms(1000);
-//	}
-
-	uint16_t i, j;
+	uint8_t temp;
 	while(true){
-		i = DS_readTemp();
-		if( i != DS_ERR){
-			for(j = 0; j < i; j++){
-				heaterOn();
-				_delay_ms(300);
-				heaterOff();
-				_delay_ms(300);
-			}
-		}else{
-			for(j = 0; j < 3; j++){
-				heaterOn();
-				_delay_ms(100);
-				heaterOff();
-				_delay_ms(100);
-			}
-		}
-		_delay_ms(1000);
-	}
+		temp = DS_readTemp();
 
-	while(true){
-		if(DS_readTemp() < TARGET_TEMP){
+		if(temp < TARGET_TEMP){
 			heaterOn();
 		}else{
 			heaterOff();
 		}
+		_delay_ms(1000);
 	}
 
 	return 0;

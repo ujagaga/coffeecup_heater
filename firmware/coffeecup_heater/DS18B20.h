@@ -10,8 +10,8 @@
 
 #define DS_MIN		(0)
 #define DS_MAX		(78)
-#define DS_ERR		(0xFFFF)
+#define DS_ERR		(0xFF)
 
-int16_t DS_readTemp( void );
+uint8_t DS_readTemp( void );
 
 #endif /* DS18B20_H_ */

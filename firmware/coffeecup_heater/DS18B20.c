@@ -13,10 +13,8 @@
 #include <util/atomic.h>
 
 #include "DS18B20.h"
-#include "main.h"
 
-
-#define COMM_PIN		(PB4)
+#define COMM_PIN		(PB3)
 #define COMM_PIN_MASK	(1 << COMM_PIN)
 
 #define pinOut()		do{ DDRB |= COMM_PIN_MASK;}while(0)
@@ -113,7 +111,7 @@ uint8_t readByte( void )
 	return result;
 }
 
-int16_t DS_readTemp( void )
+uint8_t DS_readTemp( void )
 {
 
 	_delay_ms(100);
@@ -144,14 +142,14 @@ int16_t DS_readTemp( void )
 	uint16_t result = readByte();
 
 	result |= (readByte() << 8);
+	result = (result & 0x7FF);
+	result /= 16;
 
-	if((result < (DS_MIN * 16)) || (result > (DS_MAX * 16))  ){
+	if((result < DS_MIN) || (result > DS_MAX) ){
 		return DS_ERR;
 	}
 
-	result = (result & 0x7FF);
-
-	return (int16_t)result;
+	return (int8_t)result;
 }
 
 
