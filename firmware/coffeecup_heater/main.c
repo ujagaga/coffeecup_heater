@@ -13,8 +13,8 @@
 #include <util/delay.h>
 #include "DS18B20.h"
 
-#define SWITCH_PIN				(PB3)
-#define LED_PIN					(PB4)
+#define SWITCH_PIN				(PB4)
+#define LED_PIN					(PB0)
 #define SWITCH_PIN_MASK			(1 << SWITCH_PIN)
 #define LED_PIN_MASK			(1 << LED_PIN)
 

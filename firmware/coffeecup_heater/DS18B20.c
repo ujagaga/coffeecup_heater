@@ -14,7 +14,7 @@
 
 #include "DS18B20.h"
 
-#define COMM_PIN		(PB3)
+#define COMM_PIN		(PB2)
 #define COMM_PIN_MASK	(1 << COMM_PIN)
 
 #define pinOut()		do{ DDRB |= COMM_PIN_MASK;}while(0)
