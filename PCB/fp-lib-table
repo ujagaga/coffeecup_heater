@@ -1,3 +1,0 @@
-(fp_lib_table
-  (lib (name diodebridge)(type KiCad)(uri "$(KIPRJMOD)/diodebridge.pretty")(options "")(descr ""))
-)
