@@ -8,6 +8,8 @@
 #ifndef DS18B20_H_
 #define DS18B20_H_
 
+#include "hw_cfg.h"
+
 #define DS_MIN		(0)
 #define DS_MAX		(78)
 #define DS_ERR		(0xFF)
