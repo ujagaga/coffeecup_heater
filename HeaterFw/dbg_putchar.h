@@ -15,7 +15,7 @@
 #include "hw_cfg.h"
 
 /* User setting -> Whether to enable the software UART */
-//#define DBG_UART_ENABLE		1
+#define DBG_UART_ENABLE		1
 
 /* User setting -> Output pin the software UART */
 #define DBG_UART_TX_PORT	PORTB
