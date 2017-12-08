@@ -13,7 +13,7 @@
 
 #define DBG_UART_TX_PIN		(PB4)
 
-//#define DBG_UART_ENABLE		(1)
+#define DBG_UART_ENABLE		(1)
 #define DBG_UART_BAUDRATE	(9600)
 
 

@@ -14,6 +14,6 @@
 #define DS_MAX		(110)
 #define DS_ERR		(0xFF)
 
-uint8_t DS_readTemp( void );
+extern uint8_t DS_readTemp( void );
 
 #endif /* DS18B20_H_ */

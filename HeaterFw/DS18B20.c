@@ -26,8 +26,6 @@
 #define CONVERT_T_MSG		(0x44)
 #define READ_SCRATCHPAD_MSG (0xBE)
 
-
-
 bool checkPresence( void )
 {
 	bool isPresent;

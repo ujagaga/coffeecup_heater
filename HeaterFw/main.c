@@ -28,75 +28,41 @@ void HwInit( void )
 	dbg_tx_init();
 }
 
-/* 5 or more seconds delay */
-void blink_delay( void ){
-	uint8_t seconds, counter, tgl;
+void soft_off(){
+	uint8_t counter, tgl;
 
 	counter = 0;
-	tgl = 16;
-	seconds = 0;
+	tgl = 0;
 
-	while(tgl > 1){
+	while(tgl < 16){
 		counter++;
+
 		counter &= 15;
 
 		if(counter < tgl){
-			HEATER_ON();
-		}else{
 			HEATER_OFF();
+		}else{
+			HEATER_ON();
 		}
 		_delay_ms(1);
 
 		if(counter == 0){
-			tgl--;
+			tgl++;
 		}
-	}
-
-	while(seconds < 2){
-
-		while(tgl < 16){
-			counter++;
-			counter &= 15;
-
-			if(counter < tgl){
-				HEATER_ON();
-			}else{
-				HEATER_OFF();
-			}
-			_delay_ms(1);
-
-			if(counter == 0){
-				tgl++;
-			}
-		}
-
-		while(tgl > 1){
-			counter++;
-			counter &= 15;
-
-			if(counter < tgl){
-				HEATER_ON();
-			}else{
-				HEATER_OFF();
-			}
-			_delay_ms(1);
-
-			if(counter == 0){
-				tgl--;
-			}
-		}
-
-		HEATER_OFF();
-		_delay_ms(2000);
-
-		seconds++;
 	}
 
 	HEATER_OFF();
-	_delay_ms(100);
+}
+
+void soft_on(){
+	uint8_t counter, tgl;
+
+	counter = 0;
+	tgl = 0;
 
 	while(tgl < 16){
 		counter++;
+
 		counter &= 15;
 
 		if(counter < tgl){
@@ -110,6 +76,18 @@ void blink_delay( void ){
 			tgl++;
 		}
 	}
+
+	HEATER_ON();
+}
+
+void blink_delay(){
+	uint8_t seconds;
+
+	for(seconds = 0; seconds < 5; seconds++){
+		_delay_ms(1000);
+		soft_on();
+		soft_off();
+	}
 }
 
 int main( void )
@@ -121,23 +99,20 @@ int main( void )
 	HwInit();
 
 	while(true){
-		HEATER_ON();
+		soft_on();
 		_delay_ms(20);
+
 		temperature = DS_readTemp();
 
-		if(temperature == DS_ERR){
-			dbg_printStr("\n\rno cup present");
-			blink_delay();
-		}else{
+		if(temperature != DS_ERR){
+			soft_off();
 			if(temperature > TARGET_TEMP){
-				dbg_printStr("\n\rOFF");
+				/* off */
 				blink_delay();
-			}else{
-				dbg_printStr("\n\rTemp:");
-				dbg_printDec(temperature);
-				HEATER_OFF();
-				_delay_ms(200);
 			}
+		}else{
+			soft_off();
+			_delay_ms(5000);
 		}
 	}
 
