@@ -10,8 +10,8 @@
 
 #include "hw_cfg.h"
 
-#define DS_MIN		(0)
-#define DS_MAX		(78)
+#define DS_MIN		(1)
+#define DS_MAX		(110)
 #define DS_ERR		(0xFF)
 
 uint8_t DS_readTemp( void );
