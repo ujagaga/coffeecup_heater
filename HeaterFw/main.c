@@ -15,11 +15,15 @@
 #include "dbg_putchar.h"
 #include "hw_cfg.h"
 
+
 #define HEATER_PIN_MASK			(1 << HEATER_PIN)
+#define SW_PIN_MASK				(1 << SW_PIN)
 #define HEATER_ON()				do{ PORTB |= HEATER_PIN_MASK; }while(0)
 #define HEATER_OFF()			do{ PORTB &= ~HEATER_PIN_MASK; }while(0)
+#define CUP_PRESENT()			((PINB & SW_PIN_MASK) == 0)
 #define TARGET_TEMP				(90)
 
+bool state = false;
 
 void HwInit( void )
 {
@@ -28,6 +32,7 @@ void HwInit( void )
 	dbg_tx_init();
 }
 
+/* PWM with decreasing on time */
 void soft_off(){
 	uint8_t counter, tgl;
 
@@ -52,8 +57,10 @@ void soft_off(){
 	}
 
 	HEATER_OFF();
+	state = false;
 }
 
+/* PWM with increasing on time */
 void soft_on(){
 	uint8_t counter, tgl;
 
@@ -78,41 +85,39 @@ void soft_on(){
 	}
 
 	HEATER_ON();
-}
-
-void blink_delay(){
-	uint8_t seconds;
-
-	for(seconds = 0; seconds < 5; seconds++){
-		_delay_ms(1000);
-		soft_on();
-		soft_off();
-	}
+	state = true;
 }
 
 int main( void )
 {
 	uint8_t temperature;
 
-	_delay_ms(3000); // wait 3 seconds so we have time to disconnect after programming
-
 	HwInit();
 
-	while(true){
-		soft_on();
-		_delay_ms(20);
+	while(true){	/* Main loop */
+		if(CUP_PRESENT()){
+			temperature = DS_readTemp();
 
-		temperature = DS_readTemp();
+			if(temperature < TARGET_TEMP){
+				/* on */
+				if(state){
+					soft_off();	/* just to lower the average power a bit */
+				}
 
-		if(temperature != DS_ERR){
-			soft_off();
-			if(temperature > TARGET_TEMP){
+				if(!state){
+					soft_on();
+				}
+			}else{
 				/* off */
-				blink_delay();
+				if(!state){
+					soft_on();	/* just for the "look alive" effect */
+				}
+				if(state){
+					soft_off();
+				}
+				_delay_ms(500);
 			}
-		}else{
-			soft_off();
-			_delay_ms(5000);
+			_delay_ms(500);
 		}
 	}
 

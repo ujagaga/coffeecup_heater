@@ -10,6 +10,7 @@
 
 #define DS_COMM_PIN			(PB0)
 #define HEATER_PIN			(PB1)
+#define SW_PIN				(PB3)
 
 #define DBG_UART_TX_PIN		(PB4)
 
