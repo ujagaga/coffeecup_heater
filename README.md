@@ -1,6 +1,9 @@
 # coffeecup_heater
 Keeps coffee hot indefinitely
 
-Here is firmware for a coffee cup heater with a thermostat to hold coffee temperature at 70 degrees celsius. 
-It uses Digistump module with AtTiny85 to measure temperature via DS18B20 and start heater comprized of resistors.
-Not yet finished, so check it out in a couple of days.
+Here is firmware for a coffee cup heater with a thermostat to hold coffee cup temperature at 70 degrees celsius. 
+It uses Digistump module with AtTiny85 to measure temperature via DS18B20 and start heater comprized of 220 ohm resistors.
+LEDs are connected via resistors directly to the heater so they light up when the heater is on. 
+I have modified the digistump module a bit, removed the 5V stabilizer and added an N channel mosfet to start the heater.
+A microswitch connects Vcc to the 5K resistor connected to DS18B20 data line, so the controller can detect when you place 
+a cup on the device. The Digistump module is placed on a thin 3 wire cable away from the heater and powered from a 5V/2A PSU. 
