@@ -22,6 +22,7 @@
 #define HEATER_OFF()			do{ PORTB &= ~HEATER_PIN_MASK; }while(0)
 #define CUP_PRESENT()			((PINB & SW_PIN_MASK) == 0)
 #define TARGET_TEMP				(90)
+#define HEATER_IS_OFF()			((PORTB &= HEATER_PIN_MASK) == 0)
 
 bool state = false;
 
@@ -91,7 +92,7 @@ void soft_on(){
 int main( void )
 {
 	uint8_t temperature;
-
+	
 	HwInit();
 
 	while(true){	/* Main loop */
@@ -118,6 +119,10 @@ int main( void )
 				_delay_ms(500);
 			}
 			_delay_ms(500);
+		}else{
+			if(!HEATER_IS_OFF()){
+				soft_off();
+			}
 		}
 	}
 
