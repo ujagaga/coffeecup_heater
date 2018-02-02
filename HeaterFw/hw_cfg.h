@@ -12,7 +12,7 @@
 #define HEATER_PIN			(PB1)
 #define SW_PIN				(PB3)
 
-#define DBG_UART_TX_PIN		(PB4)
+#define DBG_UART_TX_PIN		(PB2)
 
 #define DBG_UART_ENABLE		(1)
 #define DBG_UART_BAUDRATE	(9600)

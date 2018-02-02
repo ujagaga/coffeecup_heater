@@ -99,6 +99,9 @@ int main( void )
 		if(CUP_PRESENT()){
 			temperature = DS_readTemp();
 
+			dbg_printStr("\n\rTemp: ");
+			dbg_printDec(temperature);
+
 			if(temperature < TARGET_TEMP){
 				/* on */
 				if(state){
